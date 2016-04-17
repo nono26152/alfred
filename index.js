@@ -33,7 +33,7 @@ restService.post('/hook', function (req, res) {
                 if (parameters){
                     for (var p in parameters){
                         if(parameters.hasOwnProperty(p) ) {
-                            speech += p + ": " + parameters[p] + "\n";
+                            speech += p + ": " + parameters[p] + "; ";
                         }
                     }
                 }
