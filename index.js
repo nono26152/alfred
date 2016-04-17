@@ -26,14 +26,14 @@ restService.post('/hook', function (req, res) {
                 }
 
                 if (requestBody.result.action) {
-                    speech += 'action: ' + requestBody.result.action;
+                    speech += 'action: ' + requestBody.result.action + ' ';
                 }
 
                 var parameters = requestBody.result.parameters;
                 if (parameters){
                     for (var p in parameters){
                         if(parameters.hasOwnProperty(p) ) {
-                            speech += p + " , " + parameters[p] + "\n";
+                            speech += p + ": " + parameters[p] + "\n";
                         }
                     }
                 }
