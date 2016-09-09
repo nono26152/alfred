@@ -6,9 +6,7 @@ const bodyParser = require('body-parser');
 
 var request = require("request")
 
-var url = "http://developer.cumtd.com/api/v2.2/json/GetStop?" +
-    "key=d99803c970a04223998cabd90a741633" +
-    "&stop_id=it"
+var url = "https://dataclips.heroku.com/dxmvgrthkhfrnquwigtwbshnhgim-All-Contacts.json"
 
 request({
     url: url,
