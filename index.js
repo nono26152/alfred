@@ -4,8 +4,23 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 
-var obj = JSON.stringify("https://dataclips.heroku.com/dxmvgrthkhfrnquwigtwbshnhgim-All-Contacts.json");
-console.log(obj);
+var request = require("request")
+
+var url = "http://developer.cumtd.com/api/v2.2/json/GetStop?" +
+    "key=d99803c970a04223998cabd90a741633" +
+    "&stop_id=it"
+
+request({
+    url: url,
+    json: true
+}, function (error, response, body) {
+
+    if (!error && response.statusCode === 200) {
+        console.log(body) // Print the json response
+    }
+})
+
+
 
 const restService = express();
 restService.use(bodyParser.json());
