@@ -38,29 +38,23 @@ restService.post('/hook', function (req, res) {
                         if (!error && response.statusCode === 200) {
                             console.log(body) // Print the json response
                             speech += body.values[0][0];
+                            return res.json({
+                                speech: speech,
+                                displayText: speech,
+                                source: 'apiai-webhook-sample'
+                            });
                         }
                     })
                 }
                 
 
-                var parameters = requestBody.result.parameters;
-                if (parameters){
-                    for (var p in parameters){
-                        if(parameters.hasOwnProperty(p) ) {
-                            speech += p + ": " + parameters[p] + "; ";
-                        }
-                    }
-                }
+
             }
         }
 
         console.log('result: ', speech);
 
-        return res.json({
-            speech: speech,
-            displayText: speech,
-            source: 'apiai-webhook-sample'
-        });
+        
     } catch (err) {
         console.error("Can't process request", err);
 
