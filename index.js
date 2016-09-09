@@ -6,18 +6,6 @@ const bodyParser = require('body-parser');
 
 var request = require("request")
 
-var url = "https://dataclips.heroku.com/dxmvgrthkhfrnquwigtwbshnhgim-All-Contacts.json"
-
-request({
-    url: url,
-    json: true
-}, function (error, response, body) {
-
-    if (!error && response.statusCode === 200) {
-        console.log(body) // Print the json response
-    }
-})
-
 
 
 const restService = express();
@@ -41,9 +29,20 @@ restService.post('/hook', function (req, res) {
                     speech += ' ';
                 }
 
-                if (requestBody.result.action) {
-                    speech += 'action: ' + requestBody.result.action + ' ';
+                if (requestBody.result.action == "allcontacts" ) {
+                    var url = "https://dataclips.heroku.com/dxmvgrthkhfrnquwigtwbshnhgim-All-Contacts.json"
+                    request({
+                        url: url,
+                        json: true
+                    }, function (error, response, body) {
+                        if (!error && response.statusCode === 200) {
+                            console.log(body) // Print the json response
+                            speech += body.values[0][0];
+                        }
+                    })
+                    speech += ;
                 }
+                
 
                 var parameters = requestBody.result.parameters;
                 if (parameters){
