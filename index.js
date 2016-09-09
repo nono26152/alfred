@@ -40,7 +40,6 @@ restService.post('/hook', function (req, res) {
                             speech += body.values[0][0];
                         }
                     })
-                    speech += ;
                 }
                 
 
