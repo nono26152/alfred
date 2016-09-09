@@ -2,19 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-var pg = require('pg');
 
-pg.defaults.ssl = true;
-pg.connect(process.env.DATABASE_URL, function(err, client) {
-  if (err) throw err;
-  console.log('Connected to postgres! Getting schemas...');
-
-  client
-    .query('SELECT firstname FROM information_schema.tables;')
-    .on('row', function(row) {
-      console.log(JSON.stringify(row));
-    });
-});
 
 var obj = JSON.stringify("https://dataclips.heroku.com/dxmvgrthkhfrnquwigtwbshnhgim-All-Contacts.json");
 console.log(obj);
